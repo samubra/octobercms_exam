@@ -1,0 +1,17 @@
+fields:
+    module_name:
+        label: 模块名称
+        span: auto
+        required: 1
+        type: text
+    module_enabled:
+        label: 是否启用
+        span: auto
+        default: '1'
+        type: balloon-selector
+    user:
+        label: 所属用户
+        nameFrom: user_name
+        descriptionFrom: user_level
+        span: auto
+        type: relation

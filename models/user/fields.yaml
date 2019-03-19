@@ -1,0 +1,28 @@
+fields:
+    user_lastname:
+        label: 用户名
+        span: auto
+        disabled: 0
+        required: 1
+        type: text
+    user_email:
+        label: 电子邮件
+        span: auto
+        disabled: 0
+        required: 1
+        type: text
+    user_password:
+        label: 密码
+        span: auto
+        required: 1
+        context:
+            - create
+        type: password
+        comment: 至少8位数字字符
+    user_password_confirmation:
+        label: 确认密码
+        span: auto
+        context:
+            - create
+        type: password
+        comment: 再次输入相同的密码

@@ -1,0 +1,21 @@
+columns:
+    module_id:
+        label: ID
+        type: text
+        searchable: true
+        sortable: true
+    module_user_id:
+        label: 用户
+        type: text
+        invisible: true
+        select: user_name
+        relation: user
+    module_name:
+        label: 模块名称
+        type: text
+        searchable: true
+    module_enabled:
+        label: 是否启用
+        type: switch
+        searchable: true
+        sortable: true

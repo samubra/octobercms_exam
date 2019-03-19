@@ -1,0 +1,16 @@
+plugin:
+    name: 'samubra.exam::lang.plugin.name'
+    description: 'samubra.exam::lang.plugin.description'
+    author: samubra
+    icon: oc-icon-newspaper-o
+    homepage: ''
+navigation:
+    exam:
+        label: 考试管理
+        url: samubra/exam/modules
+        icon: icon-life-ring
+        sideMenu:
+            module:
+                label: 模块管理
+                url: samubra/exam/modules
+                icon: icon-sitemap
