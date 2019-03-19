@@ -1,0 +1,10 @@
+name: Users
+form: $/samubra/exam/models/user/fields.yaml
+modelClass: Samubra\Exam\Models\User
+defaultRedirect: samubra/exam/users
+create:
+    redirect: 'samubra/exam/users/update/:id'
+    redirectClose: samubra/exam/users
+update:
+    redirect: samubra/exam/users
+    redirectClose: samubra/exam/users

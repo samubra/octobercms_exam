@@ -1,0 +1,10 @@
+name: Groups
+form: $/samubra/exam/models/usergroup/fields.yaml
+modelClass: Samubra\Exam\Models\UserGroup
+defaultRedirect: samubra/exam/groups
+create:
+    redirect: 'samubra/exam/groups/update/:id'
+    redirectClose: samubra/exam/groups
+update:
+    redirect: samubra/exam/groups
+    redirectClose: samubra/exam/groups

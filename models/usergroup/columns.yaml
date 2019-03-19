@@ -1,0 +1,11 @@
+columns:
+    group_id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    group_name:
+        label: 名称
+        type: text
+        searchable: true
+        sortable: true

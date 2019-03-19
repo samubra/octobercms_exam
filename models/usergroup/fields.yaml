@@ -1,0 +1,6 @@
+fields:
+    group_name:
+        label: 组别名称
+        span: auto
+        required: 1
+        type: text
