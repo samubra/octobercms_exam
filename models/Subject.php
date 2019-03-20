@@ -34,6 +34,10 @@ class Subject extends Model
         'user' => [User::class,'key' => 'subject_user_id','otherKey' => 'user_id'],
     ];
 
+    public $hasMany = [
+        'questions' => [Question::class,'key' => 'question_subject_id' ,'otherKey' => 'subject_id']
+    ];
+
     public function getSubjectEnabledOptions()
     {
         return [
@@ -41,5 +45,10 @@ class Subject extends Model
             Exam::DISABLE => '禁用'
 
         ];
+    }
+
+    public function scopeIsEnabled($query)
+    {
+        return $query->where('subject_enabled', true)->orderBy('module_name', 'desc');
     }
 }
