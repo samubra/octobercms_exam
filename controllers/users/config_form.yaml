@@ -3,7 +3,7 @@ form: $/samubra/exam/models/user/fields.yaml
 modelClass: Samubra\Exam\Models\User
 defaultRedirect: samubra/exam/users
 create:
-    redirect: 'samubra/exam/users/update/:id'
+    redirect: 'samubra/exam/users/update/:user_id'
     redirectClose: samubra/exam/users
 update:
     redirect: samubra/exam/users

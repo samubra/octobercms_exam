@@ -1,0 +1,5 @@
+import:
+  title: 导入用户
+  modelClass: Samubra\Exam\Models\UserImport
+  list: $/samubra/exam/models/user/import_columns.yaml
+  form: $/samubra/exam/models/user/import_fields.yaml

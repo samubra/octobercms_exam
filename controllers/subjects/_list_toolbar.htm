@@ -1,5 +1,5 @@
 <div data-control="toolbar">
-        <a href="<?= Backend::url('samubra/exam/users/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?></a>
+        <a href="<?= Backend::url('samubra/exam/subjects/create') ?>" class="btn btn-primary oc-icon-plus"><?= e(trans('backend::lang.form.create')) ?></a>
             <button
         class="btn btn-default oc-icon-trash-o"
         disabled="disabled"
@@ -15,5 +15,4 @@
         data-stripe-load-indicator>
         <?= e(trans('backend::lang.list.delete_selected')) ?>
     </button>
-    <a href="<?= Backend::url('samubra/exam/users/import') ?>" class="btn btn-default oc-icon-upload">批量导入用户</a>
 </div>

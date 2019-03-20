@@ -26,32 +26,3 @@ columns:
         label: 出生地
         type: text
         searchable: true
-    user_regdate:
-        label: 注册日期
-        type: text
-        searchable: true
-    user_ip:
-        label: 注册IP
-        type: text
-        searchable: true
-
-
-    user_ssn:
-        label: SSN
-        type: text
-        searchable: true
-        invisible: true
-    user_level:
-        label: 用户等级
-        type: text
-        searchable: true
-    user_verifycode:
-        label: 安全码
-        type: text
-        searchable: true
-        invisible: true
-    user_otpkey:
-        label: 其他
-        type: text
-        searchable: true
-        invisible: true

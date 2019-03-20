@@ -14,6 +14,10 @@ navigation:
                 label: 模块管理
                 url: samubra/exam/modules
                 icon: icon-sitemap
+            subject:
+                label: 主题管理
+                url: samubra/exam/subjects
+                icon: icon-sitemap
             group:
                 label: 考试组
                 url: samubra/exam/groups

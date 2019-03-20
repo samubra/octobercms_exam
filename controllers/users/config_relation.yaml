@@ -1,0 +1,7 @@
+groups:
+  label: 用户组
+  view:
+    list: $/samubra/exam/models/usergroup/columns.yaml
+    toolbarButtons: add|remove
+  manage:
+    list: $/samubra/exam/models/usergroup/columns.yaml

@@ -52,4 +52,9 @@ class Module extends Model
         ];
 
     }
+
+    public function scopeIsEnabled($query)
+    {
+        return $query->where('module_enabled', true)->orderBy('module_name', 'desc');
+    }
 }

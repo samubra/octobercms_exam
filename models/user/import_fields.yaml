@@ -1,0 +1,16 @@
+fields:
+    group_id:
+        label: 导入到用户组
+        type: dropdown
+        span: storm
+        cssClass: col-md-4
+    user_level:
+        label: 等级
+        comment: 等级越高，权限越大，10级为管理员
+        span: storm
+        default: 1
+        cssClass: col-md-3 col-lg-2
+        type: number
+        step: 1  # defaults to 'any'
+        min: 1   # defaults to not present
+        max: 10 # defaults to not present

@@ -1,0 +1,11 @@
+name: Subjects
+modelClass: Samubra\Exam\Models\Subject
+form: $/samubra/exam/models/subject/fields.yaml
+defaultRedirect: samubra/exam/subjects
+create:
+    redirect: 'samubra/exam/subjects/update/:subject_id'
+    redirectClose: samubra/exam/subjects
+update:
+    redirect: samubra/exam/subjects
+    redirectClose: samubra/exam/subjects
+preview: {  }

@@ -1,0 +1,35 @@
+columns:
+    subject_id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    subject_user_id:
+        label: 用户
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+        select: user_name
+        relation: user
+    subject_module_id:
+        label: 模块
+        type: text
+        searchable: true
+        sortable: true
+        select: module_name
+        relation: module
+    subject_name:
+        label: 主题名称
+        type: text
+        searchable: true
+    subject_description:
+        label: 描述
+        type: text
+        searchable: true
+        invisible: true
+    subject_enabled:
+        label: 是否启用
+        type: switch
+        searchable: true
+        sortable: true

@@ -1,0 +1,30 @@
+fields:
+    module:
+        label: 模块
+        nameFrom: module_name
+        descriptionFrom: module_enabled
+        prompt: '点击 %s 选择模块'
+        list: $/samubra/exam/models/module/columns.yaml
+        span: storm
+        cssClass: col-md-4
+        required: 1
+        type: recordfinder
+    subject_name:
+        label: 主题名称
+        span: storm
+        cssClass: col-md-4
+        required: 1
+        type: text
+    subject_enabled:
+        label: 是否启用
+        span: storm
+        cssClass: col-md-4
+        default: '1'
+        required: 1
+        type: balloon-selector
+    subject_description:
+        label: 描述/说明
+        size: ''
+        mode: tab
+        span: full
+        type: markdown

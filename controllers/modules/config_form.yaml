@@ -3,7 +3,7 @@ modelClass: Samubra\Exam\Models\Module
 form: $/samubra/exam/models/module/fields.yaml
 defaultRedirect: samubra/exam/modules
 create:
-    redirect: 'samubra/exam/modules/update/:id'
+    redirect: 'samubra/exam/modules/update/:module_id'
     redirectClose: samubra/exam/modules
 update:
     redirect: samubra/exam/modules
