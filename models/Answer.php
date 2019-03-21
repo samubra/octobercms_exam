@@ -41,4 +41,29 @@ class Answer extends Model
     {
         return $query->where('answer_enabled', true)->orderBy('answer_id', 'desc');
     }
+
+    public function getDropdownOptions($fieldName, $value, $formData)
+    {
+        if($fieldName == 'answer_isright')
+            return [
+                '1' => '正确',
+                '0' => '错误',
+            ];
+        if($fieldName == 'answer_keyboard_key')
+        {
+            $keyboard = [];
+            for ($ascii = 32; $ascii <= 126; ++$ascii) {
+                if ($ascii == 32) {
+                    $keyboard[$ascii] = 'SP';
+                } else {
+                    $keyboard[$ascii] = htmlspecialchars(chr($ascii), ENT_NOQUOTES);
+                }
+            }
+            return $keyboard;
+        }
+        return [
+            Exam::NO => '否',
+            Exam::YES => '是'
+        ];
+    }
 }

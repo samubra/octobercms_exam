@@ -1,12 +1,15 @@
 fields:
     module:
         label: 所属模块
-        nameFrom: module_name
-        descriptionFrom: description
         span: storm
         cssClass: col-md-4
+        keyFrom: module_id
+        nameFrom: module_name
+        descriptionFrom: description
+        prompt: '点击 %s 选择模块'
+        list: $/samubra/exam/models/module/columns.yaml
         required: 1
-        type: relation
+        type: recordfinder
     subject_name:
         label: 主题名称
         span: storm

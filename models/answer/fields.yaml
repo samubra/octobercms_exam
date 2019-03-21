@@ -1,0 +1,60 @@
+fields:
+    question:
+        label: 题目
+        span: auto
+        keyFrom: question_id
+        nameFrom: question_description
+        descriptionFrom: description
+        prompt: 点击%s选择题目
+        list: $/samubra/exam/models/question/columns.yaml
+        required: 1
+        type: recordfinder
+
+    answer_isright:
+        label: 是否正确
+        span: storm
+        cssClass: col-md-2
+        required: 1
+        type: balloon-selector
+    answer_enabled:
+        label: 启用
+        span: storm
+        cssClass: col-md-2
+        default: '1'
+        type: balloon-selector
+    answer_description:
+        label: 答案
+        size: small
+        span: full
+        required: 1
+        stretch: 0
+        type: richeditor
+    _show_answer_explanation:
+        label: 显示答案解释
+        span: storm
+        cssClass: col-md-12
+        type: switch
+    answer_explanation:
+        label: 答案解释
+        size: small
+        span: full
+        hidden: 0
+        trigger:
+            action: show
+            field: _show_answer_explanation
+            condition: checked
+        type: richeditor
+    answer_keyboard_key:
+        label: 选择按键
+        span: storm
+        cssClass: col-md-2
+        type: dropdown
+        emptyOption: -- 不选择按键 --
+    question_position:
+        label: 题目排序
+        span: storm
+        cssClass: col-md-2
+        default: 1
+        type: number
+        step: 1
+        min: 1

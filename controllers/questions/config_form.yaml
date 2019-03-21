@@ -1,0 +1,11 @@
+name: Questions
+modelClass: Samubra\Exam\Models\Question
+form: $/samubra/exam/models/question/fields.yaml
+defaultRedirect: samubra/exam/questions
+create:
+    redirect: 'samubra/exam/questions/update/:question_id'
+    redirectClose: samubra/exam/questions
+update:
+    redirect: samubra/exam/questions
+    redirectClose: samubra/exam/questions
+preview: {  }

@@ -1,0 +1,12 @@
+title: Questions
+modelClass: Samubra\Exam\Models\Question
+list: $/samubra/exam/models/question/columns.yaml
+recordUrl: 'samubra/exam/questions/update/:question_id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

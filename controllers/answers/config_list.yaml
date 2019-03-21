@@ -1,0 +1,12 @@
+title: Answers
+modelClass: Samubra\Exam\Models\Answer
+list: $/samubra/exam/models/answer/columns.yaml
+recordUrl: 'samubra/exam/answers/update/:answer_id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

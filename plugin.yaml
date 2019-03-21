@@ -18,6 +18,14 @@ navigation:
                 label: 主题管理
                 url: samubra/exam/subjects
                 icon: icon-sitemap
+            question:
+                label: 题目管理
+                url: samubra/exam/questions
+                icon: icon-sitemap
+            answer:
+                label: 答案管理
+                url: samubra/exam/answers
+                icon: icon-sitemap
             group:
                 label: 考试组
                 url: samubra/exam/groups

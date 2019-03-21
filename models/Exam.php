@@ -46,6 +46,18 @@ class Exam extends Model
     const JOB_TITLE_INTERMEDIATE = 2;
     const JOB_TITLE_HIGH_GRADE = 3;
 
+    const EXAM_TYPE_SINGLE_ANSWER = 1;
+    const EXAM_TYPE_MULTIPLE_ANSWERS = 2;
+    const EXAM_TYPE_FREE_ANSWER = 3;
+    const EXAM_TYPE_ORDERING_ANSWER = 4;
+
+    public static $examTypeMap = [
+        self::EXAM_TYPE_SINGLE_ANSWER => '单选题',
+        self::EXAM_TYPE_MULTIPLE_ANSWERS => '多选题',
+        self::EXAM_TYPE_FREE_ANSWER => '自由回答',
+        self::EXAM_TYPE_ORDERING_ANSWER => '排序题',
+    ];
+
     public static $jobTitleMap = [
         self::JOB_TITLE_NONE => '无',
         self::JOB_TITLE_ELEMENTARY => '初级',

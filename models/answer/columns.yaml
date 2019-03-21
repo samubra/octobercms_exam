@@ -1,0 +1,25 @@
+columns:
+    answer_id:
+        label: answer_id
+        type: text
+    answer_question_id:
+        label: answer_question_id
+        type: text
+    answer_description:
+        label: answer_description
+        type: text
+    answer_explanation:
+        label: answer_explanation
+        type: text
+    answer_isright:
+        label: answer_isright
+        type: text
+    answer_enabled:
+        label: answer_enabled
+        type: text
+    answer_position:
+        label: answer_position
+        type: text
+    answer_keyboard_key:
+        label: answer_keyboard_key
+        type: text

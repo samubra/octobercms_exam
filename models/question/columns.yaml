@@ -1,0 +1,37 @@
+columns:
+    question_id:
+        label: question_id
+        type: text
+    question_subject_id:
+        label: question_subject_id
+        type: text
+    question_description:
+        label: question_description
+        type: text
+    question_explanation:
+        label: question_explanation
+        type: text
+    question_type:
+        label: question_type
+        type: text
+    question_difficulty:
+        label: question_difficulty
+        type: text
+    question_enabled:
+        label: question_enabled
+        type: text
+    question_position:
+        label: question_position
+        type: text
+    question_timer:
+        label: question_timer
+        type: text
+    question_fullscreen:
+        label: question_fullscreen
+        type: text
+    question_inline_answers:
+        label: question_inline_answers
+        type: text
+    question_auto_next:
+        label: question_auto_next
+        type: text

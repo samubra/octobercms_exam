@@ -1,0 +1,11 @@
+name: Answers
+modelClass: Samubra\Exam\Models\Answer
+form: $/samubra/exam/models/answer/fields.yaml
+defaultRedirect: samubra/exam/answers
+create:
+    redirect: 'samubra/exam/answers/update/:answer_id'
+    redirectClose: samubra/exam/answers
+update:
+    redirect: samubra/exam/answers
+    redirectClose: samubra/exam/answers
+preview: {  }

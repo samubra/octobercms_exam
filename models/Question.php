@@ -45,4 +45,19 @@ class Question extends Model
     {
         return $query->where('question_enabled', true)->orderBy('question_id', 'desc');
     }
+
+    public function getDropdownOptions($fieldName, $value, $formData)
+    {
+        if($fieldName == 'question_type')
+            return Exam::$examTypeMap;
+        return [
+            Exam::NO => '否',
+            Exam::YES => '是'
+        ];
+    }
+
+    public function beforeCreate()
+    {
+        //unset($this->user_password_confirmation);
+    }
 }

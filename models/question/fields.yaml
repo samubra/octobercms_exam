@@ -1,0 +1,87 @@
+fields:
+    subject:
+        label: 主题
+        span: auto
+        keyFrom: subject_id
+        nameFrom: subject_name
+        descriptionFrom: subject_description
+        prompt: '点击 %s 选择主题'
+        list: $/samubra/exam/models/subject/columns.yaml
+        required: 1
+        type: recordfinder
+    question_type:
+        label: 试题类型
+        span: auto
+        default: '1'
+        required: 1
+        type: balloon-selector
+    question_description:
+        label: 题目
+        size: small
+        span: full
+        required: 1
+        stretch: 0
+        type: richeditor
+    _show_question_explanation:
+        label: 显示题目解释
+        span: storm
+        cssClass: col-md-12
+        type: switch
+    question_explanation:
+        label: 题目解释
+        size: small
+        span: full
+        hidden: 0
+        trigger:
+            action: show
+            field: _show_question_explanation
+            condition: checked
+        type: richeditor
+    question_difficulty:
+        label: 题目难度
+        span: storm
+        cssClass: col-md-2
+        default: 1
+        type: number
+        step: 1
+        min: 1
+        max: 10
+    question_position:
+        label: 题目排序
+        span: storm
+        cssClass: col-md-2
+        default: 1
+        type: number
+        step: 1
+        min: 1
+    question_timer:
+        label: '计时器[秒]'
+        span: storm
+        cssClass: col-md-2
+        default: '0'
+        type: number
+        comment: 0为不计时
+    question_fullscreen:
+        label: 全屏
+        span: storm
+        cssClass: col-md-2
+        default: '0'
+        type: balloon-selector
+    question_inline_answers:
+        label: 联机答案
+        span: storm
+        cssClass: col-md-2
+        default: '0'
+        type: balloon-selector
+    question_auto_next:
+        label: 自动下一题
+        span: storm
+        cssClass: col-md-2
+        default: '0'
+        type: balloon-selector
+    question_enabled:
+        label: 启用
+        span: storm
+        cssClass: col-md-2
+        default: '1'
+        type: balloon-selector
