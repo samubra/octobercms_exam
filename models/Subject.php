@@ -49,6 +49,6 @@ class Subject extends Model
 
     public function scopeIsEnabled($query)
     {
-        return $query->where('subject_enabled', true)->orderBy('module_name', 'desc');
+        return $query->where('subject_enabled', true)->orderBy('subject_name', 'desc');
     }
 }

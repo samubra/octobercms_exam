@@ -7,9 +7,9 @@ columns:
         label: 用户名
         type: text
         searchable: true
-    user_full_name:
+    user_firstname:
         label: 姓名
-        select: concat(user_firstname, '', user_lastname)
+        type: text
     user_email:
         label: EMAIL
         type: text
@@ -34,8 +34,6 @@ columns:
         label: 注册IP
         type: text
         searchable: true
-
-
     user_ssn:
         label: SSN
         type: text

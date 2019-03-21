@@ -47,15 +47,9 @@ fields:
         min: 1   # defaults to not present
         max: 10 # defaults to not present
     user_firstname:
-        label: 用户姓
+        label: 用户姓名
         span: storm
         cssClass: col-md-3 col-lg-2
-        disabled: 0
-        type: text
-    user_lastname:
-        label: 用户名字
-        span: storm
-        cssClass: col-md-3
         disabled: 0
         type: text
     user_birthdate:
@@ -69,11 +63,11 @@ fields:
     user_birthplace:
         label: 出生地
         span: storm
-        cssClass: col-md-3 col-lg-2
+        cssClass: col-md-3
         type: text
     groups:
         label: 用户组
         type: partial
         list: groups
         span: storm
-        cssClass: col-md-4
+        cssClass: col-md-6

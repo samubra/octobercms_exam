@@ -36,6 +36,10 @@ class Module extends Model
         ]
     ];
 
+    public $hasMany = [
+        'subjects' => [Subject::class,'key' => 'subject_module_id' ,'otherKey' => 'module_id']
+    ];
+
     public function getDropdownOptions($fieldName, $value, $formData)
     {
         if($fieldName == 'module_enabled') {
@@ -55,6 +59,6 @@ class Module extends Model
 
     public function scopeIsEnabled($query)
     {
-        return $query->where('module_enabled', true)->orderBy('module_name', 'desc');
+        return $query->where('module_enabled', true)->orderBy('module_id', 'desc');
     }
 }
