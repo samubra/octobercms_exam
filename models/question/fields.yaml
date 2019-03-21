@@ -85,3 +85,9 @@ fields:
         cssClass: col-md-2
         default: '1'
         type: balloon-selector
+    answers:
+        label: 答案
+        type: partial
+        list: answers
+        span: storm
+        cssClass: col-md-12

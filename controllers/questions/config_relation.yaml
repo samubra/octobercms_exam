@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+answers:
+  label: 答案
+  view:
+    list: $/samubra/exam/models/answer/columns.yaml
+    toolbarButtons: create|delete
+  manage:
+    form: $/samubra/exam/models/answer/for_question_fields.yaml
+    recordsPerPage: 10

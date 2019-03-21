@@ -1,15 +1,4 @@
 fields:
-    question:
-        label: 题目
-        span: auto
-        keyFrom: question_id
-        nameFrom: question_description
-        descriptionFrom: description
-        prompt: 点击%s选择题目
-        list: $/samubra/exam/models/question/columns.yaml
-        required: 1
-        type: recordfinder
-
     answer_isright:
         label: 是否正确
         span: storm

@@ -39,7 +39,7 @@ class Question extends Model
     ];
 
     public $hasMany = [
-        'answers' => [Answer::class,'key' => 'answer_question_id' ,'otherKey' => 'question_id','scope' => 'isEnabled']
+        'answers' => [Answer::class,'key' => 'answer_question_id' ,'otherKey' => 'answer_id','scope' => 'isEnabled']
     ];
     public function scopeIsEnabled($query)
     {
