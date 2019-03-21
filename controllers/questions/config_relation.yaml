@@ -5,8 +5,9 @@
 answers:
   label: 答案
   view:
-    list: $/samubra/exam/models/answer/columns.yaml
-    toolbarButtons: create|delete
+    list: $/samubra/exam/models/answer/for_question_columns.yaml
+    recordUrl: 'samubra/exam/answers/update/:answer_id'
+    toolbarButtons: create|delete|add
   manage:
     form: $/samubra/exam/models/answer/for_question_fields.yaml
     recordsPerPage: 10

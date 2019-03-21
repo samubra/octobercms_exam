@@ -1,0 +1,13 @@
+columns:
+    answer_id:
+        label: ID
+        type: number
+    answer_description:
+        label: 答案内容
+        type: text
+    answer_isright:
+        label: 是否正确
+        type: switch
+    answer_position:
+        label: 排序
+        type: number

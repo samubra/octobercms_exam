@@ -1,25 +1,39 @@
 columns:
     answer_id:
-        label: answer_id
-        type: text
-    answer_question_id:
-        label: answer_question_id
-        type: text
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
     answer_description:
-        label: answer_description
+        label: 答案内容
         type: text
+        searchable: true
+    answer_question_id:
+        label: 题目
+        type: text
+        searchable: true
+        select: question_description
+        relation: question
     answer_explanation:
-        label: answer_explanation
+        label: 答案解释
         type: text
+        searchable: true
+        invisible: true
     answer_isright:
-        label: answer_isright
-        type: text
+        label: 是否正确
+        type: switch
+        searchable: true
+        sortable: true
     answer_enabled:
-        label: answer_enabled
-        type: text
+        label: 是否启用
+        type: switch
+        searchable: true
+        sortable: true
     answer_position:
-        label: answer_position
-        type: text
+        label: 排序
+        type: number
+        sortable: true
     answer_keyboard_key:
-        label: answer_keyboard_key
+        label: 按键
         type: text
+        invisible: true
