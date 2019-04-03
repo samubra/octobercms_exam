@@ -35,7 +35,9 @@ class Answer extends Model
     ];
 
     public $belongsTo = [
-        'question' => [Question::class,'key' => 'answer_question_id' , 'otherKey' => 'question_id','scope' => 'isEnabled']
+        'question' => [Question::class,'key' => 'answer_question_id' , 'otherKey' => 'question_id'
+            //,'scope' => 'isEnabled'
+            ]
     ];
     public function scopeIsEnabled($query)
     {
