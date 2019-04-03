@@ -36,11 +36,11 @@ columns:
         lable: 答案
         type: text
     answer_one:
-        lable: 选项一
+        label: 选项一
         type: text
     answer_two:
-        lable: 选项二
+        label: 选项二
         type: text
     answer_three:
-        lable: 选项三
+        label: 选项三
         type: text
