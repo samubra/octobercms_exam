@@ -35,7 +35,7 @@ columns:
     answer:
         lable: 答案
         type: text
-    $dat:
+    answer_one:
         lable: 选项一
         type: text
     answer_two:
