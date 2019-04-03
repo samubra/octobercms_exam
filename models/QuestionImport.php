@@ -26,10 +26,15 @@ class QuestionImport extends \Backend\Models\ImportModel
                 $question->fill($data);
                 $question_type = $question->question_type;
 
+                $question->question_difficulty = '5';
+                $question->question_enabled = 1;
+                $question->question_auto_next = 1;
+
                 if($question->question_type === '5'){
                     $question->question_type = '1';
                 }
                 $question->save();
+                trace_log($question->question_id);
 
                 $answerList = [];
                 if($question_type === '5'){
@@ -37,12 +42,14 @@ class QuestionImport extends \Backend\Models\ImportModel
                         new Answer([
                             'answer_description'=>'对',
                             'answer_isright'=> $data['answer'] === '1',
-                            'answer_enabled' => '1'
+                            'answer_enabled' => '1',
+                            'answer_question_id' => $question->question_id
                         ]),
                         new Answer([
                             'answer_description'=>'错',
                             'answer_isright'=> $data['answer'] === '0',
-                            'answer_enabled' => '1'
+                            'answer_enabled' => '1',
+                            'answer_question_id' => $question->question_id
                         ]),
                     ];
                 }else{
@@ -50,17 +57,20 @@ class QuestionImport extends \Backend\Models\ImportModel
                         new Answer([
                             'answer_description'=>$data['answer_one'],
                             'answer_isright'=> $data['answer'] === '1',
-                            'answer_enabled' => '1'
+                            'answer_enabled' => '1',
+                            'answer_question_id' => $question->question_id
                         ]),
                         new Answer([
                             'answer_description'=>$data['answer_two'],
                             'answer_isright'=> $data['answer'] === '2',
-                            'answer_enabled' => '1'
+                            'answer_enabled' => '1',
+                            'answer_question_id' => $question->question_id
                         ]),
                         new Answer([
                             'answer_description'=>$data['answer_three'],
                             'answer_isright'=> $data['answer'] === '3',
-                            'answer_enabled' => '1'
+                            'answer_enabled' => '1',
+                            'answer_question_id' => $question->question_id
                         ]),
                     ];
                 }
