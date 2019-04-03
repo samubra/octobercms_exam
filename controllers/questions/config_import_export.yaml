@@ -1,0 +1,8 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+  title: 导入题库
+  modelClass: Samubra\Exam\Models\QuestionImport
+  list: $/samubra/exam/models/question/import_columns.yaml
