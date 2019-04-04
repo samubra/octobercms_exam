@@ -15,7 +15,12 @@ class QuestionImport extends \Backend\Models\ImportModel
     /**
      * @var array The rules to be applied to the data.
      */
-    public $rules = [];
+    public $rules = [
+        'question_subject_id' => 'required',
+        'question_description' => 'required',
+        'question_type' => 'required',
+        'answer' => 'required',
+    ];
 
     public function importData($results, $sessionKey = null)
     {
@@ -75,7 +80,11 @@ class QuestionImport extends \Backend\Models\ImportModel
                     ];
                 }
 
-                $question->answers()->addMany($answerList);
+                //$question->answers()->addMany($answerList);
+
+                foreach ($answerList as $answer){
+                    $answer->save();
+                }
 
 
                 $this->logCreated();
