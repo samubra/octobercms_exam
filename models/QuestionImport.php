@@ -31,9 +31,10 @@ class QuestionImport extends \Backend\Models\ImportModel
                 $question->fill($data);
                 $question_type = $question->question_type;
 
-                $question->question_difficulty = '5';
-                $question->question_enabled = 1;
-                $question->question_auto_next = 1;
+
+                $question->question_difficulty = isset($data['question_difficulty'])?$data['question_difficulty']:'5';
+                $question->question_enabled = isset($data['question_enabled'])?$data['question_enabled']:1;
+                $question->question_auto_next = isset($data['question_auto_next'])?$data['question_auto_next']:1;
 
                 if($question->question_type === '5'){
                     $question->question_type = '1';
