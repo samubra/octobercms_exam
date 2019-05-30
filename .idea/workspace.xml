@@ -15,8 +15,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/QuestionImport.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="91" column="57" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
+            <state relative-caret-position="345">
+              <caret line="29" column="96" selection-start-line="29" selection-start-column="96" selection-end-line="29" selection-end-column="96" />
+              <folding>
+                <element signature="e#1075#1182#0#PHP" />
+                <element signature="e#1320#3156#0#PHP" />
+                <element signature="e#2064#3156#0#PHP" />
+                <element signature="e#2104#3137#0#PHP" />
+                <element signature="e#3237#3325#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,12 +128,12 @@
       <updated>1554281847194</updated>
       <workItem from="1554281848681" duration="2039000" />
       <workItem from="1554980454386" duration="33000" />
-      <workItem from="1559180808017" duration="1487000" />
+      <workItem from="1559180808017" duration="1857000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3559000" />
+    <option name="totallyTimeSpent" value="3929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -187,8 +194,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/QuestionImport.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="91" column="57" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
+        <state relative-caret-position="345">
+          <caret line="29" column="96" selection-start-line="29" selection-start-column="96" selection-end-line="29" selection-end-column="96" />
+          <folding>
+            <element signature="e#1075#1182#0#PHP" />
+            <element signature="e#1320#3156#0#PHP" />
+            <element signature="e#2064#3156#0#PHP" />
+            <element signature="e#2104#3137#0#PHP" />
+            <element signature="e#3237#3325#0#PHP" />
+          </folding>
         </state>
       </provider>
     </entry>

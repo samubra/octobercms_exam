@@ -27,7 +27,9 @@ class QuestionImport extends \Backend\Models\ImportModel
         foreach ($results as $row => $data) {
 
             try {
-                if (Question::where('question_tq_id', $data['question_tq_id'])->get()->count() === "0"){
+                if (Question::where('question_tq_id', $data['question_tq_id'])->get()->count()){
+                    $this->logSkipped($row, '该题目已存在，已经跳过！');
+                }else{
                     $question = new Question();
                     $question->fill($data);
                     $question_type = $question->question_type;
@@ -88,8 +90,7 @@ class QuestionImport extends \Backend\Models\ImportModel
                         $answer->save();
                     }
                     $this->logCreated();
-                }else{
-                    $this->logSkipped($row, '该题目已存在，已经跳过！');
+
                 }
             }
             catch (\Exception $ex) {
