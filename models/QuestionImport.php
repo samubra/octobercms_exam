@@ -28,11 +28,11 @@ class QuestionImport extends \Backend\Models\ImportModel
 
             try {
                 $question = new Question();
-                $question->fill($data);
+            	$question->fill($data);
                 $question_type = $question->question_type;
 
 
-                $question->question_difficulty = isset($data['question_difficulty'])?$data['question_difficulty']:'5';
+                $question->question_difficulty = isset($data['question_difficulty'])?$data['question_difficulty']:'1';
                 $question->question_enabled = isset($data['question_enabled'])?$data['question_enabled']:1;
                 $question->question_auto_next = isset($data['question_auto_next'])?$data['question_auto_next']:1;
 
@@ -47,13 +47,13 @@ class QuestionImport extends \Backend\Models\ImportModel
                     $answerList = [
                         new Answer([
                             'answer_description'=>'对',
-                            'answer_isright'=> $data['answer'] === '1',
+                            'answer_isright'=> $data['answer'] === '对',
                             'answer_enabled' => '1',
                             'answer_question_id' => $question->question_id
                         ]),
                         new Answer([
                             'answer_description'=>'错',
-                            'answer_isright'=> $data['answer'] === '0',
+                            'answer_isright'=> $data['answer'] === '错',
                             'answer_enabled' => '1',
                             'answer_question_id' => $question->question_id
                         ]),
@@ -62,19 +62,19 @@ class QuestionImport extends \Backend\Models\ImportModel
                     $answerList = [
                         new Answer([
                             'answer_description'=>$data['answer_one'],
-                            'answer_isright'=> $data['answer'] === '1',
+                            'answer_isright'=> $data['answer'] === 'A',
                             'answer_enabled' => '1',
                             'answer_question_id' => $question->question_id
                         ]),
                         new Answer([
                             'answer_description'=>$data['answer_two'],
-                            'answer_isright'=> $data['answer'] === '2',
+                            'answer_isright'=> $data['answer'] === 'B',
                             'answer_enabled' => '1',
                             'answer_question_id' => $question->question_id
                         ]),
                         new Answer([
                             'answer_description'=>$data['answer_three'],
-                            'answer_isright'=> $data['answer'] === '3',
+                            'answer_isright'=> $data['answer'] === 'C',
                             'answer_enabled' => '1',
                             'answer_question_id' => $question->question_id
                         ]),
@@ -93,6 +93,7 @@ class QuestionImport extends \Backend\Models\ImportModel
             catch (\Exception $ex) {
                 $this->logError($row, $ex->getMessage());
             }
+		
 
         }
     }

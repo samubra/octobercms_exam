@@ -20,7 +20,7 @@ class Question extends Model
     /**
      * @var string The database table used by the model.
      */
-    protected $fillable = ['question_subject_id','question_description','question_explanation','question_type','question_difficulty','question_enabled','question_position','question_timer','question_fullscreen','question_inline_answers','question_auto_next'];
+    protected $fillable = ['question_subject_id','question_tq_id','question_description','question_explanation','question_type','question_difficulty','question_enabled','question_position','question_timer','question_fullscreen','question_inline_answers','question_auto_next'];
 
 
     /**

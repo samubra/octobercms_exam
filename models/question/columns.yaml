@@ -2,6 +2,9 @@ columns:
     question_id:
         label: question_id
         type: text
+    question_tq_id:
+        label: tikuID
+        type: text
     question_subject_id:
         label: question_subject_id
         type: text

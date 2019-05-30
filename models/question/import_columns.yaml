@@ -2,6 +2,9 @@ columns:
     question_subject_id:
         label: 主题ID
         type: text
+    question_tq_id:
+        label: 题库ID
+        type: text
     question_description:
         label: 问题
         type: text
