@@ -88,6 +88,8 @@ class QuestionImport extends \Backend\Models\ImportModel
                         $answer->save();
                     }
                     $this->logCreated();
+                }else{
+                    $this->logSkipped($row, '该题目已存在，已经跳过！');
                 }
             }
             catch (\Exception $ex) {
