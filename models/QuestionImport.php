@@ -27,6 +27,7 @@ class QuestionImport extends \Backend\Models\ImportModel
         foreach ($results as $row => $data) {
 
             try {
+                trace_sql();
                 if (Question::where('question_tq_id', $data['question_tq_id'])->get()->count()){
                     $this->logSkipped($row, '该题目已存在，已经跳过！');
                 }else{
@@ -43,7 +44,7 @@ class QuestionImport extends \Backend\Models\ImportModel
                         $question->question_type = '1';
                     }
                     $question->save();
-                    trace_log($question->question_id);
+                    //trace_log($question->question_id);
 
                     $answerList = [];
                     if ($question_type === '5') {
