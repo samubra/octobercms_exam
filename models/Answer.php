@@ -39,6 +39,17 @@ class Answer extends Model
             //,'scope' => 'isEnabled'
             ]
     ];
+
+
+    public $belongsToMany = [
+        'testLogs' => [
+            TestLogs::class,
+            'table'    => 'samubra_exam_tests_logs_answers',
+            'otherKey'      => 'logansw_testlog_id',
+            'key' => 'logansw_answer_id',
+            'pivot' => ['logansw_selected', 'logansw_order','logansw_position']
+        ]
+    ];
     public function scopeIsEnabled($query)
     {
         return $query->where('answer_enabled', true)->orderBy('answer_id', 'desc');

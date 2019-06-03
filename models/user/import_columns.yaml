@@ -25,3 +25,9 @@ columns:
         label: 出生地
         type: text
         searchable: true
+    test_id:
+        label: 考试ID
+        type: text
+    tq_id:
+        label: 题库ID
+        type: text

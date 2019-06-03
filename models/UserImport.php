@@ -16,47 +16,63 @@ class UserImport extends \Backend\Models\ImportModel
      */
     public $rules = [
         'user_name'         => 'required|between:4,116',
-        'user_email'        => 'required',
+        //'user_email'        => 'required',
         'user_level'        => 'required|numeric|min:1|max:10',
         'user_regnumber'    => 'required|unique:samubra_exam_users'
     ];
 
+    protected $testUser;
+    protected $test;
+    protected $testLog;
+    protected $testLogAnswer;
+    protected $user;
+    protected $postData;
+    protected $question = null;
+
+    protected $updatedMessage = '';
+
     public function importData($results, $sessionKey = null)
     {
         foreach ($results as $row => $data) {
-
+            $this->postData = $data;
             try {
+                //trace_sql();
+                $users = User::where('user_name',$this->postData['user_name'])->get();
+                //trace_log($users->count());
+                if($users->count()){
+                    $this->user = $users->first();
+                    $this->updatedMessage .= '当前用户已存在';
+                }else {
+                    $this->user = new User;
+                    $this->user->fill($this->postData);
+                    $this->user->user_password = str_replace(PHP_EOL, '', substr($this->user->user_regnumber, -8));
+                    if (!$this->user->user_level)
+                        $this->user->user_level = $this->user_level;
+                    $this->user->user_regdate = now()->toDateTimeString();
+                    $this->user->user_ip = request()->getClientIp();
 
-                trace_sql();
-                $user = new User;
-                $user->fill($data);
+                    trace_log($this->user->user_firstname);
+                    if (isset($this->postData['group_id'])) {
+                        $this->user->groups = [$this->postData['group_id']];
+                    } else {
+                        $this->user->groups = [$this->group_id];
+                    }
+                    $this->user->save();
+                    $this->updatedMessage .= '用户创建成功';
+                }
 
-                $user->user_password = str_replace(PHP_EOL, '', substr($user->user_regnumber, -8));
-                //$user->user_password = password_hash('123456', PASSWORD_DEFAULT);
-                $password = password_hash(str_replace(PHP_EOL, '', substr($user->user_regnumber, -8)), PASSWORD_DEFAULT);
-               // trace_log('明文密码：' . substr($user->user_regnumber, -8));
-               // trace_log('加密密码：' . password_hash(str_replace(PHP_EOL, '', substr($user->user_regnumber, -8)), PASSWORD_DEFAULT));
-               // trace_log('加密密码2：' . $user->user_password);
-                if (!$user->user_level)
-                    $user->user_level = 1;
-                $user->user_regdate = now()->toDateTimeString();
-                $user->user_ip = request()->getClientIp();
-                //trace_log($user->user_firstname);
-                //if ($user->user_full_name) {
-                //    $user->user_lastname = substr($user->user_firstname, 2);
-                //    $user->user_firstname = substr($user->user_firstname, 1, 1);
+                if(isset($this->postData['test_id']) && isset($this->postData['tq_id'])){
+                    $this->test = Test::where('test_id',$this->postData['test_id'])->first();
+                    $this->createTestuser();
+                    $this->getQuestion();
+                    if(is_null($this->question))
+                        continue;
+                    $this->createTestLogs();
+                    $this->createLogAnswers();
+                }
 
-                trace_log($user->user_firstname);
-                    //dd($user);
-                    //trace_log($user->user_firstname);
-              //  }
-                $user->groups = [$this->group_id];
-                $user->user_level = $this->user_level;
-                $user->save();
-
-
-
-                $this->logCreated();
+                $this->logWarning($row,$this->updatedMessage.'。');
+                $this->updatedMessage = '';
             }
             catch (\Exception $ex) {
                 $this->logError($row, $ex->getMessage());
@@ -69,5 +85,74 @@ class UserImport extends \Backend\Models\ImportModel
     {
         //return ['1'=>'22'];
         return UserGroup::lists('group_name','group_id');
+    }
+
+    protected function createTestuser()
+    {
+        $testUsers = TestUsers::where('testuser_test_id',$this->postData['test_id'])->where('testuser_user_id',$this->user->user_id)->get();
+        //trace_log('testuserIDs:'.$testUsers->count());
+        if($testUsers->count())
+        {
+            $this->testUser = $testUsers->first();
+            $this->updatedMessage .= ',测试用户已存在';
+        }else{
+            $this->testUser = new TestUsers();
+            $this->testUser->testuser_test_id = $this->postData['test_id'];
+            $this->testUser->testuser_user_id = $this->user->user_id;
+            $this->testUser->testuser_status = 1;
+            $this->testUser->testuser_creation_time = $this->test->test_begin_time;
+            $this->testUser->save();
+            $this->updatedMessage .= ',测试用户添加成功';
+        }
+
+    }
+
+
+    protected function getQuestion()
+    {
+        $questions = Question::where('question_tq_id',$this->postData['tq_id'])->with('answers','answers_count')->get();
+        //trace_log('questionsIDs:'.$questions->count());
+        if($questions->count())
+            $this->question = $questions->first();
+        else
+            $this->question = null;
+    }
+    protected function createTestLogs()
+    {
+        if($this->question)
+        {
+            $this->testLog = new TestLogs();
+            $this->testLog->testlog_testuser_id = $this->testUser->testuser_id;
+            $this->testLog->testlog_question_id = $this->question->question_id;
+            $this->testLog->testlog_score = '0.000';
+            $this->testLog->testlog_display_time = null;//$this->test->test_begin_time;
+            $this->testLog->testlog_reaction_time = '0';
+
+            $testLogCount = TestLogs::where('testlog_testuser_id',$this->testUser->testuser_id)->get()->count();
+
+            $this->testLog->testlog_order = $testLogCount + 1;
+            //trace_log($this->question->answers);
+            $this->testLog->testlog_num_answers = $this->question->answers->count();
+
+            $this->testLog->save();
+
+            $this->updatedMessage .= ',试题已添加成功';
+        }else{
+            $this->updatedMessage .= ',试题没有找到';
+        }
+
+    }
+
+    protected function createLogAnswers()
+    {
+        if($this->question){
+            $answers = $this->question->answers;
+
+            foreach ($answers as $key => $answer){
+                $this->testLog->answers()->add($answer,['logansw_order' => $key +1]);
+            }
+            $this->updatedMessage .= ',试题答案添加成功';
+        }
+
     }
 }
