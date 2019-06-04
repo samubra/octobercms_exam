@@ -103,7 +103,13 @@ class UserImport extends \Backend\Models\ImportModel
             $this->testUser->testuser_creation_time = $this->test->test_begin_time;
             $this->testUser->save();
             $this->updatedMessage .= ',测试用户添加成功';
+
+            $testUserStu = new TestUserStu();
+            $testUserStu->tus_date = $this->testUser->testuser_creation_time;
+            $testUserStu->save();
         }
+
+
 
     }
 
