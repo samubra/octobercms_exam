@@ -1,0 +1,6 @@
+scopes:
+  subject:
+    label: 主题
+    modelClass: Samubra\Exam\Models\Subject
+    conditions: question_subject_id in (:filtered)
+    nameFrom: subject_name

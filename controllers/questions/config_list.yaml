@@ -1,6 +1,7 @@
 title: Questions
 modelClass: Samubra\Exam\Models\Question
 list: $/samubra/exam/models/question/columns.yaml
+filter: config_filter.yaml
 recordUrl: 'samubra/exam/questions/update/:question_id'
 noRecordsMessage: 'backend::lang.list.no_records'
 recordsPerPage: 20

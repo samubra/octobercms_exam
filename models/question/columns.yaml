@@ -5,9 +5,15 @@ columns:
     question_tq_id:
         label: tikuID
         type: text
+    answers_count:
+        label: 答案数量
+        relation: answers
+        useRelationCount: true
     question_subject_id:
         label: question_subject_id
         type: text
+        relation: subject
+        select: subject_name
     question_description:
         label: question_description
         type: text
