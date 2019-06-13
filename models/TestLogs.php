@@ -36,4 +36,12 @@ class TestLogs extends Model
             'pivot' => ['logansw_selected', 'logansw_order','logansw_position']
         ]
     ];
+
+    public $belongsTo = [
+        'test_user' => [
+            TestUsers::class,
+            'key' => 'testlog_testuser_id',
+            'otherKey' => 'testuser_id'
+        ],
+    ];
 }

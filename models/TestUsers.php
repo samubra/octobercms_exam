@@ -32,4 +32,18 @@ class TestUsers extends Model
         'test' => [Test::class,'key' => 'testuser_test_id','otherKey' => 'test_id'],
         'user' => [User::class,'key' => 'testuser_user_id','otherKey' => 'user_id'],
     ];
+
+    public $hanMany = [
+        'test_logs' => [
+            TestLogs::class,
+            'key' => 'testlog_testuser_id',
+            'otherKey' => 'testuser_id',
+        ],
+        'test_logs_count' => [
+            TestLogs::class,
+            'key' => 'testlog_testuser_id',
+            'otherKey' => 'testuser_id',
+            'count' => true
+        ],
+    ];
 }
