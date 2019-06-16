@@ -1,7 +1,10 @@
 <?= Form::open(['class' => 'layout']) ?>
 
 <div class="layout-row">
-    <?= $this->importRender() ?>
+    <p class="flash-message static success">
+导入说明：1、判断题对应的题型为5，选择题对应的题型为1；2、判断题正确的答案为A，错误的答案为B；
+</p>
+	<?= $this->importRender() ?>
 </div>
 
 <div class="form-buttons">

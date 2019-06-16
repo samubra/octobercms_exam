@@ -39,11 +39,20 @@ columns:
         lable: 答案
         type: text
     answer_one:
-        label: 选项一
+        label: 选项A
         type: text
     answer_two:
-        label: 选项二
+        label: 选项B
         type: text
     answer_three:
-        label: 选项三
+        label: 选项C
+        type: text
+    answer_four:
+        label: 选项D
+        type: text
+    answer_five:
+        label: 选项E
+        type: text
+    answer_six:
+        label: 选项F
         type: text

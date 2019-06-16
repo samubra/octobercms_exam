@@ -51,13 +51,13 @@ class QuestionImport extends \Backend\Models\ImportModel
                         $answerList = [
                             new Answer([
                                 'answer_description' => '对',
-                                'answer_isright' => $data['answer'] === '对',
+                                'answer_isright' => $data['answer'] === 'A',
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
                             new Answer([
                                 'answer_description' => '错',
-                                'answer_isright' => $data['answer'] === '错',
+                                'answer_isright' => $data['answer'] === 'B',
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
@@ -66,23 +66,47 @@ class QuestionImport extends \Backend\Models\ImportModel
                         $answerList = [
                             new Answer([
                                 'answer_description' => $data['answer_one'],
-                                'answer_isright' => $data['answer'] === 'A',
+                                'answer_isright' => \Str::contains($data['answer'], 'A'),
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
                             new Answer([
                                 'answer_description' => $data['answer_two'],
-                                'answer_isright' => $data['answer'] === 'B',
+                                'answer_isright' => \Str::contains($data['answer'], 'B'),
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
                             new Answer([
                                 'answer_description' => $data['answer_three'],
-                                'answer_isright' => $data['answer'] === 'C',
+                                'answer_isright' => \Str::contains($data['answer'], 'C'),
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
                         ];
+			if(isset($data['answer_four'])){
+				$answerList[] = new Answer([
+                                'answer_description' => $data['answer_four'],
+                                'answer_isright' => \Str::contains($data['answer'], 'D'),
+                                'answer_enabled' => '1',
+                                'answer_question_id' => $question->question_id
+                            ]);
+			}
+			if(isset($data['answer_five'])){
+                                $answerList[] = new Answer([
+                                'answer_description' => $data['answer_five'],
+                                'answer_isright' => \Str::contains($data['answer'], 'E'),
+                                'answer_enabled' => '1',
+                                'answer_question_id' => $question->question_id
+                            ]);
+                        }
+			if(isset($data['answer_six'])){
+                                $answerList[] = new Answer([
+                                'answer_description' => $data['answer_six'],
+                                'answer_isright' => \Str::contains($data['answer'], 'F'),
+                                'answer_enabled' => '1',
+                                'answer_question_id' => $question->question_id
+                            ]);
+                        }
                     }
 
                     //$question->answers()->addMany($answerList);
