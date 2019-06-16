@@ -17,7 +17,7 @@ fields:
         span: full
         required: 1
         stretch: 0
-        type: richeditor
+        type: textarea
     _show_answer_explanation:
         label: 显示答案解释
         span: storm

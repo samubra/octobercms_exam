@@ -21,7 +21,7 @@ fields:
         span: full
         required: 1
         stretch: 0
-        type: richeditor
+        type: textarea 
     _show_question_explanation:
         label: 显示题目解释
         span: storm
