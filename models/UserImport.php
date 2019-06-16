@@ -43,6 +43,7 @@ class UserImport extends \Backend\Models\ImportModel
                 if($users->count()){
                     $this->user = $users->first();
                     $groupIds = $this->user->groups->pluck('group_id');
+                    trace_log($groupIds);
                     if(!in_array($currentGroupId, $groupIds)){
                     	$this->user->groups()->attach($currentGroupId);
                     	$this->user->save();
