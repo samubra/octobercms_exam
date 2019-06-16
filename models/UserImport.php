@@ -37,11 +37,20 @@ class UserImport extends \Backend\Models\ImportModel
             $this->postData = $data;
             try {
                 //trace_sql();
-                $users = User::where('user_name',$this->postData['user_name'])->get();
+                $users = User::where('user_name',$this->postData['user_name'])->with('groups')->get();
+                $currentGroupId = isset($this->postData['group_id']) ? [$this->postData['group_id']]:[$this->group_id];
                 //trace_log($users->count());
                 if($users->count()){
                     $this->user = $users->first();
-                    $this->updatedMessage .= '当前用户已存在';
+                    $groupIds = $this->user->groups->pluck('group_id');
+                    if(!in_array($currentGroupId, $groupIds)){
+                    	$this->user->groups()->attach($currentGroupId);
+                    	$this->user->save();
+                    	$this->updatedMessage .= '当前用户已存在,但是添加了用户组，';
+                    }else{
+                    	$this->updatedMessage .= '当前用户已存在';
+                    }
+                    
                 }else {
                     $this->user = new User;
                     $this->user->fill($this->postData);
@@ -51,12 +60,8 @@ class UserImport extends \Backend\Models\ImportModel
                     $this->user->user_regdate = now()->toDateTimeString();
                     $this->user->user_ip = request()->getClientIp();
 
-                    trace_log($this->user->user_firstname);
-                    if (isset($this->postData['group_id'])) {
-                        $this->user->groups = [$this->postData['group_id']];
-                    } else {
-                        $this->user->groups = [$this->group_id];
-                    }
+                    //trace_log($this->user->user_firstname);
+                    $this->user->groups =$currentGroupId;
                     $this->user->save();
                     $this->updatedMessage .= '用户创建成功';
                 }
