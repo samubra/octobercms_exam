@@ -61,6 +61,8 @@ class UserImport extends \Backend\Models\ImportModel
                     $this->user->user_regdate = now()->toDateTimeString();
                     $this->user->user_ip = request()->getClientIp();
 
+                    $this->user->user_email = $this->user->user_regnumber.'@tiikoo.cn';
+
                     //trace_log($this->user->user_firstname);
                     $this->user->groups =$currentGroupId;
                     $this->user->save();
