@@ -44,7 +44,7 @@ class UserImport extends \Backend\Models\ImportModel
                     $this->user = $users->first();
                     $groupIds = $this->user->groups->pluck('group_id');
                     //trace_log($groupIds);
-                    if(is_array($groupIds) && count($groupIds) && !in_array($currentGroupId, $groupIds)){
+                    if(!in_array($currentGroupId, [$groupIds])){
                     	$this->user->groups()->attach($currentGroupId);
                     	$this->user->save();
                     	$this->updatedMessage .= '当前用户已存在,但是添加了用户组，';
