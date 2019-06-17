@@ -97,7 +97,7 @@ class UserImport extends \Backend\Models\ImportModel
 
     protected function createTestuser()
     {
-        $testUsers = TestUsers::where('testuser_test_id',$this->postData['test_id'])->with('test_logs_count')->where('testuser_user_id',$this->user->user_id)->get();
+        $testUsers = TestUsers::where('testuser_test_id',$this->postData['test_id'])->where('testuser_user_id',$this->user->user_id)->get();
         //trace_log('testuserIDs:'.$testUsers->count());
         if($testUsers->count())
         {
