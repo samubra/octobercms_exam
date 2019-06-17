@@ -38,7 +38,7 @@ class UserImport extends \Backend\Models\ImportModel
             try {
                 //trace_sql();
                 $users = User::where('user_name',$this->postData['user_name'])->with('groups')->get();
-                $currentGroupId = isset($this->postData['group_id']) ? [$this->postData['group_id']]:[$this->group_id];
+                $currentGroupId = isset($this->postData['group_id']) ? $this->postData['group_id']:$this->group_id;
                 //trace_log($users->count());
                 if($users->count()){
                     $this->user = $users->first();
@@ -64,7 +64,7 @@ class UserImport extends \Backend\Models\ImportModel
                     $this->user->user_email = $this->user->user_regnumber.'@tiikoo.cn';
 
                     //trace_log($this->user->user_firstname);
-                    $this->user->groups =$currentGroupId;
+                    $this->user->groups()->attach($currentGroupId);
                     $this->user->save();
                     $this->updatedMessage .= '用户创建成功';
                 }
