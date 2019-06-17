@@ -138,7 +138,7 @@ class UserImport extends \Backend\Models\ImportModel
             $this->testLog->testlog_display_time = null;//$this->test->test_begin_time;
             $this->testLog->testlog_reaction_time = '0';
 
-            $testLogCount = TestLogs::where('testlog_testuser_id',$this->testUser->testuser_id)->get()->count();
+            $testLogCount = TestLogs::where('testlog_testuser_id',$this->testUser->testuser_id)->count();
 
             $this->testLog->testlog_order = $testLogCount + 1;
             //trace_log($this->question->answers);
