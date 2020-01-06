@@ -4,6 +4,7 @@ fields:
         type: dropdown
         span: storm
         cssClass: col-md-4
+        emptyOption: -- 无用户组 --
     user_level:
         label: 等级
         comment: 等级越高，权限越大，10级为管理员

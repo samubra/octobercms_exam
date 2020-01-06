@@ -36,7 +36,7 @@ class UserImport extends \Backend\Models\ImportModel
         foreach ($results as $row => $data) {
             $this->postData = $data;
             try {
-                //trace_sql();
+            //    trace_sql();
                 $users = User::where('user_name',$this->postData['user_name'])->with('groups')->get();
                 $currentGroupId = isset($this->postData['group_id']) ? $this->postData['group_id']:$this->group_id;
                 //trace_log($users->count());
@@ -64,15 +64,17 @@ class UserImport extends \Backend\Models\ImportModel
                     $this->user->user_email = $this->user->user_regnumber.'@tiikoo.cn';
 
                     //trace_log($this->user->user_firstname);
+			$this->user->save();
                     $this->user->groups()->attach($currentGroupId);
                     $this->user->save();
                     $this->updatedMessage .= '用户创建成功';
                 }
-
                 if(isset($this->postData['test_id']) && isset($this->postData['tq_id'])){
                     $this->test = Test::where('test_id',$this->postData['test_id'])->first();
                     $this->createTestuser();
+			//trace_log($this->test);
                     $this->getQuestion();
+		
                     if(is_null($this->question))
                         continue;
                     $this->createTestLogs();
@@ -121,7 +123,7 @@ class UserImport extends \Backend\Models\ImportModel
     protected function getQuestion()
     {
         $questions = Question::where('question_tq_id',$this->postData['tq_id'])->with('answers','answers_count')->get();
-        //trace_log('questionsIDs:'.$questions->count());
+        trace_log('questionsIDs:'.$questions->count());
         if($questions->count())
             $this->question = $questions->first();
         else
@@ -131,6 +133,7 @@ class UserImport extends \Backend\Models\ImportModel
     {
         if($this->question)
         {
+		trace_log('questionID:'.$this->question->question_id);
             $this->testLog = new TestLogs();
             $this->testLog->testlog_testuser_id = $this->testUser->testuser_id;
             $this->testLog->testlog_question_id = $this->question->question_id;
@@ -145,10 +148,11 @@ class UserImport extends \Backend\Models\ImportModel
             $this->testLog->testlog_num_answers = $this->question->answers->count();
 
             $this->testLog->save();
-
+		trace_log('logID:'.$this->testLog->testlog_id);
             $this->updatedMessage .= ',试题已添加成功';
         }else{
             $this->updatedMessage .= ',试题没有找到';
+		trace_log($this->updaateMessage);
         }
 
     }

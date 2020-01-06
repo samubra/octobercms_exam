@@ -9,6 +9,8 @@ navigation:
         label: 考试管理
         url: samubra/exam/modules
         icon: icon-life-ring
+        permissions:
+            - manage_exam
         sideMenu:
             module:
                 label: 模块管理
@@ -34,3 +36,8 @@ navigation:
                 label: 考试用户
                 url: samubra/exam/users
                 icon: icon-sitemap
+permissions:
+    manage_exam:
+        tab: 考试管理
+        label: 管理考试
+

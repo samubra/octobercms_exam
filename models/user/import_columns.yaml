@@ -13,6 +13,9 @@ columns:
         label: EMAIL
         type: text
         searchable: true
+    group_id:
+        label: 用户组
+        type: text
     user_regnumber:
         label: 身份证号
         type: text
