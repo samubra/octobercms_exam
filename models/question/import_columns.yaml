@@ -36,7 +36,7 @@ columns:
         label: 自动下一题
         type: text
     answer:
-        lable: 答案
+        label: 答案
         type: text
     answer_one:
         label: 选项A
