@@ -28,8 +28,8 @@ class QuestionImport extends \Backend\Models\ImportModel
 
             try {
                 //trace_sql();
-                if (Question::where('question_tq_id', $data['question_tq_id'])->get()->count()){
-                    $this->logSkipped($row, '该题目已存在，已经跳过！');
+                if(isset($data['question_tq_id']) && Question::where('question_tq_id', $data['question_tq_id'])->get()->count()){
+                        $this->logSkipped($row, '该题目已存在，已经跳过！');
                 }else{
                     $question = new Question();
                     $question->fill($data);
@@ -51,18 +51,19 @@ class QuestionImport extends \Backend\Models\ImportModel
                         $answerList = [
                             new Answer([
                                 'answer_description' => '对',
-                                'answer_isright' => $data['answer'] === 'A',
+                                'answer_isright' => \Str::contains($data['answer'], ['A','对']),
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
                             new Answer([
                                 'answer_description' => '错',
-                                'answer_isright' => $data['answer'] === 'B',
+                                'answer_isright' => \Str::contains($data['answer'], ['B','错']),
                                 'answer_enabled' => '1',
                                 'answer_question_id' => $question->question_id
                             ]),
                         ];
                     } else {
+
                         $answerList = [
                             new Answer([
                                 'answer_description' => $data['answer_one'],
@@ -121,7 +122,7 @@ class QuestionImport extends \Backend\Models\ImportModel
             catch (\Exception $ex) {
                 $this->logError($row, $ex->getMessage());
             }
-		
+
 
         }
     }
