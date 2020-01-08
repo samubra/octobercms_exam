@@ -35,6 +35,7 @@ class UserImport extends \Backend\Models\ImportModel
     {
         foreach ($results as $row => $data) {
             $this->postData = $data;
+            $this->postData['user_regnumber'] = strtoupper($data['user_regnumber']);
             try {
             //    trace_sql();
                 $users = User::where('user_name',$this->postData['user_name'])->with('groups')->get();
@@ -51,7 +52,7 @@ class UserImport extends \Backend\Models\ImportModel
                     }else{
                     	$this->updatedMessage .= '当前用户已存在';
                     }
-                    
+
                 }else {
                     $this->user = new User;
                     $this->user->fill($this->postData);
@@ -74,7 +75,7 @@ class UserImport extends \Backend\Models\ImportModel
                     $this->createTestuser();
 			//trace_log($this->test);
                     $this->getQuestion();
-		
+
                     if(is_null($this->question))
                         continue;
                     $this->createTestLogs();
